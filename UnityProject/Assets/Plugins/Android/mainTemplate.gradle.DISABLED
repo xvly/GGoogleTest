@@ -11,7 +11,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-unity:13.7.0' // Assets/Firebase/Editor/AuthDependencies.xml:23
     implementation 'com.google.firebase:firebase-common:22.0.1' // Assets/Firebase/Editor/AppDependencies.xml:16
 // Android Resolver Dependencies End
-    implementation 'com.google.android.gms:play-services-auth:21.1.0'
 **DEPS**}
 
 // Android Resolver Exclusions Start
