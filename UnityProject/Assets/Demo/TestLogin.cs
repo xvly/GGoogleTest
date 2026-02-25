@@ -20,14 +20,14 @@ public class TestLogin : MonoBehaviour
     public Button logoutButton;
     public Button refreshTokenButton;
     // 在 Inspector 中填入在 Google Cloud / Firebase 控制台得到的 Web client ID
-    public string webClientId = "1:376231049174:android:4be9be362cb5c78e27d677";
+    public const string webClientId = "376231049174-tq8c95cd3gfiov7b9p7c15adm04eqs8m.apps.googleusercontent.com";
 
     // 请求码，用于 startActivityForResult
     private const int GOOGLE_SIGN_IN_REQUEST = 9001;
 
     void Start()
     {
-        Debug.Log("开始初始化Firebase...");
+        Debug.Log("[google] 开始初始化Firebase...");
         // 初始化Firebase
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
@@ -37,7 +37,7 @@ public class TestLogin : MonoBehaviour
                 auth = FirebaseAuth.DefaultInstance;
                 user = auth.CurrentUser;
                 UpdateUI();
-                Debug.Log("Firebase初始化成功");
+                Debug.Log("[google] Firebase初始化成功");
             }
             else
             {
@@ -59,7 +59,7 @@ public class TestLogin : MonoBehaviour
     // 谷歌登录
     public void SignInWithGoogle()
     {
-        Debug.Log("开始谷歌登录...");
+        Debug.Log("[google] 开始谷歌登录...");
         
         if (statusText != null)
             statusText.text = "谷歌登录中...";
@@ -92,7 +92,7 @@ public class TestLogin : MonoBehaviour
             }
             else
             {
-                Debug.Log("未获取到Google账户，尝试启动Google登录界面");
+                Debug.Log("[google] 未获取到Google账户，尝试启动Google登录界面");
                 if (statusText != null)
                     statusText.text = "未获取到Google账户，启动登录界面...";
                 StartGoogleSignInIntentAndroid(activity);
@@ -152,6 +152,7 @@ public class TestLogin : MonoBehaviour
                     statusText.text = "启动登录失败: " + ex.Message;
                 return;
             }
+            
             gsoBuilder = gsoBuilder.Call<AndroidJavaObject>("requestIdToken", webClientId);
             gsoBuilder = gsoBuilder.Call<AndroidJavaObject>("requestEmail");
             var gso = gsoBuilder.Call<AndroidJavaObject>("build");
@@ -161,7 +162,7 @@ public class TestLogin : MonoBehaviour
             var signInIntent = googleSignInClient.Call<AndroidJavaObject>("getSignInIntent");
             activity.Call("startActivityForResult", signInIntent, GOOGLE_SIGN_IN_REQUEST);
 
-            Debug.Log("已启动 Google Sign-In 界面，等待用户操作...");
+            Debug.Log("[google] 已启动 Google Sign-In 界面，等待用户操作... webClientId=" + webClientId);
         }
         catch (System.Exception ex)
         {
@@ -174,7 +175,7 @@ public class TestLogin : MonoBehaviour
     // iOS平台获取谷歌Token
     private void GetGoogleTokenIOS()
     {
-        Debug.Log("iOS平台需要集成Google Sign-In SDK");
+        Debug.Log("[google] iOS平台需要集成Google Sign-In SDK");
         if (statusText != null)
             statusText.text = "iOS平台谷歌登录功能需要额外配置";
     }
@@ -188,7 +189,7 @@ public class TestLogin : MonoBehaviour
             var result = await auth.SignInWithCredentialAsync(credential);
             
             user = result;
-            Debug.Log("谷歌登录成功! 用户ID: " + user.UserId);
+            Debug.Log("[google] 谷歌登录成功! 用户ID: " + user.UserId + " 邮箱: " + user.Email + " 昵称: " + user.DisplayName);
             if (statusText != null)
                 statusText.text = "登录成功! 欢迎 " + user.DisplayName;
             
@@ -222,12 +223,12 @@ public class TestLogin : MonoBehaviour
             var current = auth.CurrentUser;
             // TokenAsync 对应底层的 getIdToken(boolean)
             var token = await current.TokenAsync(forceRefresh);
-            Debug.Log("获取到 Firebase ID token（长度）: " + (token != null ? token.Length.ToString() : "null"));
+            Debug.Log("[google] 获取到 Firebase ID token（长度）: " + (token != null ? token.Length.ToString() : "null"));
             if (statusText != null)
                 statusText.text = "获取到 Firebase ID token";
 
             // 如果需要把 token 传给原生或其他模块，可在这里处理
-            webClientId = token; // 仅示例，实际使用中请妥善管理 token  
+            // webClientId = token; // 仅示例，实际使用中请妥善管理 token  
             if (tokenText != null)
                 tokenText.text = "Firebase ID Token: " + token.Substring(0, Math.Min(20, token.Length)) + "...";
         }
@@ -245,7 +246,7 @@ public class TestLogin : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(idToken))
         {
-            Debug.Log("收到 idToken，继续用 Firebase 登录");
+            Debug.Log("[google] 收到 idToken，继续用 Firebase 登录");
             SignInWithCredential(idToken);
         }
         else
@@ -261,7 +262,7 @@ public class TestLogin : MonoBehaviour
     {
         auth.SignOut();
         user = null;
-        Debug.Log("已登出");
+        Debug.Log("[google] 已登出");
         
         if (statusText != null)
             statusText.text = "已登出";
@@ -299,7 +300,7 @@ public class TestLogin : MonoBehaviour
     // UI 按钮点击：强制刷新 Firebase ID token
     public void RefreshFirebaseToken()
     {
-        Debug.Log("用户点击刷新 Token 按钮");
+        Debug.Log("[google] 用户点击刷新 Token 按钮");
         if (statusText != null)
             statusText.text = "正在刷新 Firebase ID token...";
         GetFirebaseIdToken(true); // 传 true 强制从服务器刷新

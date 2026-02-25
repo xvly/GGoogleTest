@@ -358,7 +358,7 @@ MonoBehaviour:
   googleLoginButton: {fileID: 1510509412}
   logoutButton: {fileID: 1064247490}
   refreshTokenButton: {fileID: 894818317}
-  webClientId: '1:376231049174:android:4be9be362cb5c78e27d677 '
+  webClientId: '1086767371634-i863kisk6dteco6t8o1a6tlnq3vb3r4i.apps.googleusercontent.com '
 --- !u!4 &914343382
 Transform:
   m_ObjectHideFlags: 0

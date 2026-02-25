@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.googlesignin">
+    package="com.xgame.googlesignin">
 
     <!-- 这是一个 manifest 合并片段：它把 Unity 的默认 Activity 替换为示例的 GoogleSignInActivity。
          在使用前请确认包名、权限以及与现有 manifest 无冲突。
     -->
 
     <application>
-        <activity android:name="com.example.googlesignin.GoogleSignInActivity"
+        <activity android:name="com.xgame.googlesignin.GoogleSignInActivity"
             android:label="@string/app_name"
             android:exported="true">
             <intent-filter>
