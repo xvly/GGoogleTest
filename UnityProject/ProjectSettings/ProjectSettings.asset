@@ -8,7 +8,7 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 0
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -254,7 +254,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/coder/game/gbraver/build/config/android/yao.keystore
+  AndroidKeystoreName: D:/coder/github/GGoogleTest/config/android/yao.keystore
   AndroidKeyaliasName: yao
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
