@@ -3,3 +3,9 @@ UnityProject/Library
 UnityProject/obj
 UnityProject/Temp
 UnityProject/Out
+UnityProject/Logs
+
+
+*.csproj
+*.sln
+UnityProject/.idea/.idea.UnityProject/.idea/indexLayout.xml
