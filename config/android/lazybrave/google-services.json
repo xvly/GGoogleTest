@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "376231049174",
+    "project_id": "lazy-brave",
+    "storage_bucket": "lazy-brave.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376231049174:android:4be9be362cb5c78e27d677",
+        "android_client_info": {
+          "package_name": "com.xgame.lazybrave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376231049174-tq8c95cd3gfiov7b9p7c15adm04eqs8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xgame.lazybrave",
+            "certificate_hash": "55d9907f44ce9a8aa287ccbd2a73a425ba43e727"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWySiJzxedwrQ6AOytRkwT0EYJ5wELQV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
