@@ -20,6 +20,10 @@
             "package_name": "com.xgame.lazybrave",
             "certificate_hash": "55d9907f44ce9a8aa287ccbd2a73a425ba43e727"
           }
+        },
+        {
+          "client_id": "376231049174-jp0gs9rrjv57fskvdtrvd04idaaekvpp.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
@@ -29,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "376231049174-jp0gs9rrjv57fskvdtrvd04idaaekvpp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

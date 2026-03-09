@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xgame.googlesignin">
+    package="com.xgame.lazybrave">
 
-    <!-- 这是一个 manifest 合并片段：它把 Unity 的默认 Activity 替换为示例的 GoogleSignInActivity。
-         在使用前请确认包名、权限以及与现有 manifest 无冲突。
+    <!-- 合并片段：使用自定义的 Unity Activity（继承自 UnityPlayerActivity），
+         以便拦截 onActivityResult 并将 Google Sign-In 结果回传给 Unity。
     -->
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application>
-        <activity android:name="com.xgame.googlesignin.GoogleSignInActivity"
+        <!-- 保持 Unity 启动 Activity，但替换为自定义实现以处理 onActivityResult -->
+        <activity android:name="com.xgame.lazybrave.CustomUnityPlayerActivity"
             android:label="@string/app_name"
             android:exported="true">
             <intent-filter>

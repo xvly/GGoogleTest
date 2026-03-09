@@ -20,7 +20,7 @@ public class TestLogin : MonoBehaviour
     public Button logoutButton;
     public Button refreshTokenButton;
     // 在 Inspector 中填入在 Google Cloud / Firebase 控制台得到的 Web client ID
-    public const string webClientId = "376231049174-tq8c95cd3gfiov7b9p7c15adm04eqs8m.apps.googleusercontent.com";
+    public const string webClientId = "376231049174-jp0gs9rrjv57fskvdtrvd04idaaekvpp.apps.googleusercontent.com";
 
     // 请求码，用于 startActivityForResult
     private const int GOOGLE_SIGN_IN_REQUEST = 9001;
@@ -28,6 +28,11 @@ public class TestLogin : MonoBehaviour
     void Start()
     {
         Debug.Log("[google] 开始初始化Firebase...");
+        // 确保 GameObject 名称用于原生回调（由 CustomUnityPlayerActivity 回传）
+        if (gameObject != null && gameObject.name != "GoogleSignInListener")
+        {
+            gameObject.name = "GoogleSignInListener";
+        }
         // 初始化Firebase
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
